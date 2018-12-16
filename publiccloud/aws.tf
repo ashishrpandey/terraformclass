@@ -14,22 +14,6 @@ resource "aws_instance" "web"{
     	command = "echo ${self.private_ip} > file.txt"
 }	
 
-	connection {
-    host = "${aws_instance.web.public_ip}"
-  }
-
-  	provisioner "remote-exec" {
-        inline = ["echo ${self.private_ip} > file.txt",
-		"sudo yum install mysql -y",
-		"sudo yum install httpd -y"]
-    connection {
-    type = "ssh"
-    user = "ec2-user"
-    private_key = "${file("ashish-key")}"
-    timeout = "2m"
-    agent = false
-}
-}
 
 }
 
