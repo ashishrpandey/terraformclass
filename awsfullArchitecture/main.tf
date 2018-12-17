@@ -3,10 +3,10 @@ provider "aws" {
 }
 
 # Deploy Storage Resource
-module "storage" {
-  source       = "./storage"
-  project_name = "${var.project_name}"
-}
+#module "storage" {
+#  source       = "./storage"
+#  project_name = "${var.project_name}"
+#}
 
 # Deploy Networking Resources
 
@@ -25,7 +25,8 @@ module "compute" {
   key_name        = "${var.key_name}"
   public_key_path = "${var.public_key_path}"
   instance_type   = "${var.server_instance_type}"
-  subnets         = "${module.networking.public_subnets}"
+  #subnets         = "${module.networking.public_subnet}"
+  subnets         = ["${module.networking.public_subnet}","${module.networking.private_subnet}"]
   security_group  = "${module.networking.public_sg}"
-  subnet_ips      = "${module.networking.subnet_ips}"
+  subnet_ips      = "${var.public_cidrs}"
 }

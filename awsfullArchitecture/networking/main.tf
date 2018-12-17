@@ -33,31 +33,46 @@ resource "aws_route_table" "tf_public_rt" {
   }
 }
 
-resource "aws_default_route_table" "tf_private_rt" {
-  default_route_table_id = "{aws_vpc.tf_vpc.default_route_table.id}"
+#resource "aws_default_route_table" "tf_private_rt" {
+#  default_route_table_id = "{aws_vpc.tf_vpc.default_route_table.id}"
+#
+#  tags {
+#    Name = "tf_private"
+#  }
+#}
+
+resource "aws_subnet" "public_subnet" {
+  vpc_id                  = "${aws_vpc.tf_vpc.id}"
+  cidr_block              = "${var.public_cidrs[0]}"
+  map_public_ip_on_launch = true
+  availability_zone       = "${data.aws_availability_zones.available.names[0]}"
 
   tags {
-    Name = "tf_private"
+    Name = "tf_public_subnet}"
   }
 }
 
-resource "aws_subnet" "tf_public_subnet" {
-  count                   = 2
+resource "aws_subnet" "private_subnet" {
   vpc_id                  = "${aws_vpc.tf_vpc.id}"
-  cidr_block              = "${var.public_cidrs[count.index]}"
-  map_public_ip_on_launch = true
-  availability_zone       = "${data.aws_availability_zones.available.names[count.index]}"
+  cidr_block              = "${var.public_cidrs[1]}"
+  map_public_ip_on_launch = false
+  availability_zone       = "${data.aws_availability_zones.available.names[0]}"
 
   tags {
-    Name = "tf_public_${count.index + 1}"
+    Name = "tf_private_subnet"
   }
 }
 
 resource "aws_route_table_association" "tf_public_assoc" {
-  count          = "${aws_subnet.tf_public_subnet.count}"
-  subnet_id      = "${aws_subnet.tf_public_subnet.*.id[count.index]}"
+  subnet_id      = "${aws_subnet.public_subnet.id}"
   route_table_id = "${aws_route_table.tf_public_rt.id}"
 }
+
+#resource "aws_route_table_association" "tf_private_assoc" {
+#  subnet_id      = "${aws_subnet.private_subnet.id}"
+#  route_table_id = "${aws_default_route_table.tf_private_rt.id}"
+#}
+
 
 resource "aws_security_group" "tf_public_sg" {
   name        = "tf_public_sg"
