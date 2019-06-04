@@ -4,18 +4,8 @@ provider "google" {
   region      = "asia-south1"
   zone    = "asia-south1-a"
 }
-resource "google_compute_instance" "vm_instance" {
-  name         = "terraform-instance"
-  machine_type = "f1-micro"
+resource "google_storage_bucket" "image-store" {
+  name     = "image-store-bucket-ashish426"
+  location = "EU"
 
-  boot_disk {
-    initialize_params {
-      image = "debian-cloud/debian-9"
-    }
-  }
-
-  network_interface {
-    # A default network is created for all GCP projects
-    network       = "default"
-  }
 }
