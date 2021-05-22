@@ -6,11 +6,20 @@
     mv terraform /usr/bin/
     rm  -f terraform_0.15.0_linux_amd64.zip
     
+
+## Install docker, as our first terraform provider
+    
+    yum update -y 
+    yum install docker -y 
+    service docker start 
+    
+
+### Create a terraform script 
+
+refer to the file first-apply/main.tf 
     
 ## Initialize terraform 
 
-### Create a terraform script 
-    
-
     terraform init 
+    
     
