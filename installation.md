@@ -10,9 +10,10 @@
 ## Install docker, as our first terraform provider
     
     yum update -y 
-    yum install docker -y 
+    yum install docker git -y 
     service docker start 
     
+    git clone  https://github.com/ashishrpandey/terraformclass
 
 ### Create a terraform script 
 
