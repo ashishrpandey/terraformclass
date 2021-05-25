@@ -1,4 +1,4 @@
 variable "project_name" {
-	type = "string" 
-   default = "zeke-terraform-bucket-Ashish"
+	type = string 
+   default = "ibm-terraform-bucket-ashish"
 }

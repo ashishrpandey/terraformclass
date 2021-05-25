@@ -1,4 +1,14 @@
-# Download the latest nginx Image
+terraform {
+  required_providers {
+    docker = {
+      source = "kreuzwerker/docker"
+      version = "2.11.0"
+    }
+  }
+}
+
+
+# Download the latest nginx Imagei
 module "image" {
   source = "./image"
   image  = "${var.image}"

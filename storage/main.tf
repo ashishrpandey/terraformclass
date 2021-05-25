@@ -2,11 +2,7 @@
 
 provider "aws" {
   region = "ap-south-1"
-  access_key= "AAI4ABJCTLA3H4EAXA"
-  secret_key= "hJadH+tTn5F8WEyXizwwwr2H81ZgqQ36qPQNA8"
 }
-
-# Create a random id 
 
 
 # Create the bucket
@@ -16,7 +12,7 @@ resource "aws_s3_bucket" "tf_code" {
   acl           = "private"
   force_destroy = true
 
-  tags {
+  tags = {
     Name = "tf_bucket"
   }
 }

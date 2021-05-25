@@ -1,4 +1,16 @@
-
+terraform {
+  required_providers {
+    docker = {
+      source = "kreuzwerker/docker"
+      version = "2.11.0"
+    }
+  }
+  backend "s3" {
+    bucket = "zekelabs-ibm-tf-backend"
+    key    = "ibm-tf.tfstate"
+    region = "ap-south-1"
+  }
+}
 # Download the latest Image
 resource "docker_image" "image_id" {
   name = "${var.image}"
@@ -13,7 +25,7 @@ resource "docker_container" "container_id" {
   }
 }
 #Output the IP Address and Container name
-output "IP Address" {
+output "IP-Address" {
   value = "${docker_container.container_id.ip_address}"
 }
 output "container_name" {

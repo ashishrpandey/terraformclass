@@ -1,8 +1,8 @@
 #Output the IP Address of the Container
-output "IP Address" {
+output "IPAddress" {
   value = "${module.container.ip}"
 }
 
-output "Container Name" {
+output "ContainerName" {
   value = "${module.container.container_name}"
 }
