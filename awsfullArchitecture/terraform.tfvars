@@ -7,6 +7,6 @@ public_cidrs = [
     ]
 accessip = "0.0.0.0/0"
 key_name = "nirmaan-key" 
-public_key_path = "/home/ec2-user/nirmaan-key.pub"
+public_key_path = "/root/terraformclass/publiccloud/ashish-key.pub"
 server_instance_type = "t2.micro" 
 instance_count = 2

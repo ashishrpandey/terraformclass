@@ -2,30 +2,30 @@
 
 #----storage outputs------
 
-#output "Bucket Name" {
-#  value = "${module.storage.bucketname}"
-#}
+output "BucketName" {
+  value = "${module.storage.bucketname}"
+}
 
 #---Networking Outputs -----
 
-#output "Public Subnets" {
-#  value = "${join(", ", module.networking.public_subnets)}"
-#}
+output "PublicSubnets" {
+  value = "${module.networking.public_subnet}"
+}
 
-#output "Subnet IPs" {
-#  value = "${join(", ", module.networking.subnet_ips)}"
-#}
+output "SubnetIPs" {
+  value = "${module.networking.subnet_ips}"
+}
 
-output "Public Security Group" {
+output "PublicSecurityGroup" {
   value = "${module.networking.public_sg}"
 }
 
 #---Compute Outputs ------
 
-#output "Public Instance IDs" {
-#  value = "${module.compute.server_id}"
-#}
+output "PublicInstanceIDs" {
+  value = "${module.compute.server_id}"
+}
 
-#output "Public Instance IPs" {
-#  value = "${module.compute.server_ip}"
-#}
+output "PublicInstanceIPs" {
+  value = "${module.compute.server_ip}"
+}

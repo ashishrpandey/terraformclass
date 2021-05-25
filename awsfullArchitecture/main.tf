@@ -3,15 +3,16 @@ provider "aws" {
 }
 
 # Deploy Storage Resource
-#module "storage" {
-#  source       = "./storage"
-#  project_name = "${var.project_name}"
-#}
+module "storage" {
+  source       = "./storage"
+  project_name = "${var.project_name}"
+}
 
 # Deploy Networking Resources
 
 module "networking" {
-  source       = "./networking"
+  source       = "github.com/modules/networking"
+  version = 1.3.0 
   vpc_cidr     = "${var.vpc_cidr}"
   public_cidrs = "${var.public_cidrs}"
   accessip     = "${var.accessip}"

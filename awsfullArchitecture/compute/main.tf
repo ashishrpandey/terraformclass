@@ -2,6 +2,7 @@
 
 data "aws_ami" "server_ami" {
   most_recent = true
+  owners = ["amazon"] 
 
   filter {
     name   = "owner-alias"
@@ -33,7 +34,7 @@ resource "aws_instance" "tf_server" {
   instance_type = "${var.instance_type}"
   ami           = "${data.aws_ami.server_ami.id}"
 
-  tags {
+  tags = {
     Name = "tf_server-${count.index +1}"
   }
 
