@@ -11,8 +11,7 @@ module "storage" {
 # Deploy Networking Resources
 
 module "networking" {
-  source       = "github.com/modules/networking"
-  version = 1.3.0 
+  source       = "./networking"
   vpc_cidr     = "${var.vpc_cidr}"
   public_cidrs = "${var.public_cidrs}"
   accessip     = "${var.accessip}"
