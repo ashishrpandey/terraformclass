@@ -5,11 +5,6 @@ terraform {
       version = "2.11.0"
     }
   }
-  backend "s3" {
-    bucket = "zekelabs-ibm-tf-backend"
-    key    = "ibm-tf.tfstate"
-    region = "ap-south-1"
-  }
 }
 # Download the latest Image
 resource "docker_image" "image_id" {
