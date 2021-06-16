@@ -1,5 +1,3 @@
-env = dev
-
 container_name = {
   prod = "prod_blog"
   dev  = "dev_blog"

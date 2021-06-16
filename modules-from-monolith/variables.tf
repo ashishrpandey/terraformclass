@@ -1,6 +1,6 @@
 variable "container_name" {
   description = "Name of container"
-  default = "blog"
+  default = "def_container"
 }
 variable "image" {
   description = "image for container"
@@ -8,10 +8,8 @@ variable "image" {
 }
 variable "int_port" {
   description = "internal port for container"
-  default = "80"
 }
 variable "ext_port" {
   description = "external port for container"
-  default = "8080"
 }
 

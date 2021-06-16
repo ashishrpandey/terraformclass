@@ -1,5 +1,6 @@
 variable "env" {
   description = "env: dev or prod"
+  default = "dev"
 }
 
 variable "container_name" {

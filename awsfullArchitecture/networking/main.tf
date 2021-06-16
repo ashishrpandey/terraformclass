@@ -7,6 +7,7 @@ resource "aws_vpc" "tf_vpc" {
   enable_dns_hostnames = true
   enable_dns_support   = true
 
+
   tags  = {
     Name = "tf_vpc"
   }
@@ -56,7 +57,7 @@ resource "aws_subnet" "private_subnet" {
   vpc_id                  = "${aws_vpc.tf_vpc.id}"
   cidr_block              = "${var.public_cidrs[1]}"
   map_public_ip_on_launch = false
-  availability_zone       = "${data.aws_availability_zones.available.names[0]}"
+  availability_zone       = "${data.aws_availability_zones.available.names[1]}"
 
   tags = {
     Name = "tf_private_subnet"
