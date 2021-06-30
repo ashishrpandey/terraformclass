@@ -6,11 +6,15 @@ provider "aws" {
   region = "${var.aws_region}"
 }
 
+
 # Deploy Storage Resource
 module "storage" {
   source       = "./storage"
   project_name = "${var.project_name}"
 }
+
+
+
 
 # Deploy Networking Resources
 
@@ -22,6 +26,11 @@ module "networking" {
 }
 
 # Deploy Compute Resources
+
+module "database"
+{
+
+}
 
 module "compute" {
   source          = "./compute"
