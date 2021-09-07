@@ -1,0 +1,10 @@
+*.lock.hcl
+*.tfstate
+*.backup
+*.terraform
+*.pub
+*.pem
+*.swp
+*.plan
+*.log
+*.tfstate_backup

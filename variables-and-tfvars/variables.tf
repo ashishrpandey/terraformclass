@@ -1,7 +1,8 @@
 variable "env" {
   description = "env: dev or prod"
-  default = "dev"
 }
+
+#var.env = "dev"
 
 variable "container_name" {
   description = "Name of container"

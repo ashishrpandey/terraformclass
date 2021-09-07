@@ -2,9 +2,9 @@
 
 #----storage outputs------
 
-output "BucketName" {
-  value = "${module.storage.bucketname}"
-}
+#output "BucketName" {
+#  value = "${module.storage.bucketname}"
+#}
 
 #---Networking Outputs -----
 

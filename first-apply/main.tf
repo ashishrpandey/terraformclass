@@ -13,14 +13,14 @@ resource "docker_image" "nginx_ibm_image" {
   name = "nginx:latest"
 }
 
-resource "docker_container" "nginx_ibm_container" {
-  name  = "nginxcontainer"
-  image = "nginx:latest"
+#resource "docker_container" "nginx_ibm_container" {
+#  name  = "nginxcontainer"
+#  image = "nginx:latest"
 #  image =  docker_image.nginx_ibm_image.latest
 
 
 # in master branch 
 
-}
+#}
 
 

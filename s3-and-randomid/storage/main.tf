@@ -28,18 +28,14 @@ resource "random_id" "tf_bucket_id" {
 # Create the bucket
 
 resource "aws_s3_bucket" "ashish_bucket" {
-  bucket        = "ashish-${var.project_name}-${random_id.tf_bucket_id.dec}"
+  count         = 2
+  bucket        = "${count.index}-${var.project_name}-${random_id.tf_bucket_id.dec}"
   acl           = "private"
   force_destroy = true
   tags  = {
     Name = "tf_bucket"
   }
 }
-resource "aws_s3_bucket" "tf_code" {
-  bucket        = "${var.project_name}-${random_id.tf_bucket_id.dec}"
-  acl           = "private"
-  force_destroy = true
-  tags  = {
-    Name = "tf_bucket"
-  }
-}
+
+
+

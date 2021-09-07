@@ -1,7 +1,14 @@
+#env = "dev"
+
 container_name = {
   prod = "prod_blog"
   dev  = "dev_blog"
 }
+
+#var.container_name[var.env] = "prod_blog" 
+#var.container_name[var.env] = "dev_blog" 
+
+
 image = {
   prod = "nginx:alpine"
   dev  = "nginx:latest"

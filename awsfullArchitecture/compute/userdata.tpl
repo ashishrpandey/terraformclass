@@ -1,5 +1,5 @@
 #!/bin/bash
-yum install httpd -y
+sudo yum install httpd -y
 echo "Subnet for Firewall: ${firewall_subnets}" >> /var/www/html/index.html
-service httpd start
+sudo service httpd start
 chkconfig httpd on
