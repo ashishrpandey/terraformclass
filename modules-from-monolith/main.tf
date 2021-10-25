@@ -1,16 +1,8 @@
-terraform {
-  required_providers {
-    docker = {
-      source = "kreuzwerker/docker"
-      version = "2.11.0"
-    }
-  }
-}
 
 # Start the Container
 module "container" {
-  source   = "github.com/hariprasath2603/terraformclass/modules-from-monolith/container"
-#  source   = "./container"
+#  source   = "github.com/hariprasath2603/terraformclass/modules-from-monolith/container"
+  source   = "./container"
   image    = module.image.image_out
   name     = var.container_name
   int_port = var.int_port

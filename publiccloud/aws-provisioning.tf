@@ -23,7 +23,7 @@ provider "aws" {
 resource "aws_key_pair" "ashish-key" {
   key_name   = "ashish-key"
   public_key = file("./ashish-key.pub")
-  attribute = aws_instance.web.id
+  #attribute = aws_instance.web.id
 }
 
 resource "aws_instance" "web" {
@@ -39,6 +39,15 @@ resource "aws_instance" "web" {
     source      = "./index.html"
     destination = "/home/ec2-user/index.html"
   }
+ 
+  provisioner "local-exec" {
+    command = "echo ${self.public_ip} >> mypublic_ips.txt"
+    environment = {
+      FOO = "${self.id}"
+      BAR = 1
+      BAZ = "true"
+    }
+  }
 
   provisioner "remote-exec" {
     inline = [
@@ -48,12 +57,12 @@ resource "aws_instance" "web" {
       "sudo cp /home/ec2-user/index.html /var/www/html/index.html"
     ]
   }
-  #	connection {
-  #    			type     = "ssh"
-  #    			user     = "ec2-user"
-  #                	host = self.public_ip 
-  #                	private_key = file("./ashish-key")
-  #  		}
+  connection {
+  	type     = "ssh"
+ 	user     = "ec2-user"
+  	host = self.public_ip 
+  	private_key = file("./ashish-key")
+  }
 
 
 }

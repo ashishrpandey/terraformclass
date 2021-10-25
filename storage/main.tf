@@ -32,7 +32,7 @@ resource "aws_s3_bucket" "tf_code" {
 
 resource "aws_s3_bucket_object" "object" {
   bucket = aws_s3_bucket.tf_code.id
-  key    = "myfileons3.txt"
+  key    = "mylocalfile"
   source = "./mylocalfile"
 
   # The filemd5() function is available in Terraform 0.11.12 and later
@@ -42,14 +42,14 @@ resource "aws_s3_bucket_object" "object" {
 }
 
 
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
+#module "s3_bucket" {
+#  source = "terraform-aws-modules/s3-bucket/aws"
+#
+#  bucket = "ashish-zeke-module-bucket"
+#  acl    = "private"
+#
+#  versioning = {
+#    enabled = true
+#  }
 
-  bucket = "ashish-zeke-module-bucket"
-  acl    = "private"
-
-  versioning = {
-    enabled = true
-  }
-
-}
+#}

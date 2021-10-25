@@ -2,7 +2,7 @@ output "upper_names" {
   value = [for name in var.names : upper(name)]
 }
 
-# module.user.upper_names[0] = "NEO"
+# upper_names[0] = "NEO"
 
 
 output "short_upper_names" {
@@ -15,7 +15,7 @@ output "short_upper_names" {
 #length(set) = no of items in the set 
 
 output "bios" {
-  value = [for name, role in var.hero_thousand_faces : "${name} is the ${role}"]
+  value = { for name, role in var.hero_thousand_faces : "${name}" => "${name} is the ${role}" }
 }
 
 output "upper_roles" {

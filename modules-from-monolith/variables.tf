@@ -1,6 +1,6 @@
 variable "container_name" {
   description = "Name of container"
-  default = "def_container"
+ # default = "def_container"
   type = string 
 }
 variable "image" {

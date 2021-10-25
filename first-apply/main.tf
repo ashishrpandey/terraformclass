@@ -10,17 +10,19 @@ terraform {
 # Download the ghost:latest docker_image "image_id" to the system using a Terraform resource
 
 resource "docker_image" "nginx_ibm_image" {
-  name = "nginx:latest"
+  name = "nginx:1.20"
 }
 
-#resource "docker_container" "nginx_ibm_container" {
-#  name  = "nginxcontainer"
-#  image = "nginx:latest"
-#  image =  docker_image.nginx_ibm_image.latest
+resource "docker_image" "ubuntu_image" {
+  name = "ubuntu:latest"
+}
 
-
-# in master branch 
-
-#}
+resource "docker_container" "ubuntu" {
+  name  = "foo"
+  image = docker_image.ubuntu_image.latest 
+  command = ["bash"]
+  tty = true
+  stdin_open = true
+}
 
 

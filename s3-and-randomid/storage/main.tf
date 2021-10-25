@@ -7,11 +7,11 @@ terraform {
     }
   }
 
-   backend "s3" {
-    bucket = "ibm-terraform-training"
-    key    = "remotestate.tfstate"
-    region = "ap-south-1"
-  }
+#   backend "s3" {
+#    bucket = "ibm-terraform-training"
+#    key    = "remotestate.tfstate"
+#    region = "ap-south-1"
+#  }
 
 }
 
@@ -28,7 +28,7 @@ resource "random_id" "tf_bucket_id" {
 # Create the bucket
 
 resource "aws_s3_bucket" "ashish_bucket" {
-  count         = 2
+  count         = 0
   bucket        = "${count.index}-${var.project_name}-${random_id.tf_bucket_id.dec}"
   acl           = "private"
   force_destroy = true

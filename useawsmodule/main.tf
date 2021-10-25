@@ -1,3 +1,13 @@
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "3.47.0"
+    }
+  }
+}
+
+
 provider "aws" {
   region = "ap-south-1"
 }
@@ -52,8 +62,8 @@ module "security_group" {
   vpc_id      = data.aws_vpc.default.id
 
   ingress_cidr_blocks = ["0.0.0.0/0"]
-  ingress_rules       = ["http-80-tcp","ssh"]
-  egress_rules        = ["all-all"]
+#  ingress_rules       = ["http-80-tcp","ssh"]
+#  egress_rules        = ["all-all"]
 }
 
 module "ec2" {
@@ -62,7 +72,7 @@ module "ec2" {
 
   instance_count = 1
   user_data_base64 = base64encode(local.user_data)
-  name          = "example-t2-unlimited"
+  name          = "Ashish"
   key_name      = "ashish-key"
   ami           = data.aws_ami.amazon_linux.id
   instance_type = "t2.micro"

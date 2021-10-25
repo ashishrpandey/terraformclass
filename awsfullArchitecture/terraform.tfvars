@@ -1,5 +1,5 @@
 aws_region = "ap-south-1"
-project_name = "ibm-terraform"
+project_name = "epsilon-ashish-terraform"
 vpc_cidr = "10.10.0.0/16"
 public_cidrs = [
     "10.10.1.0/24",

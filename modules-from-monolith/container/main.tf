@@ -7,6 +7,10 @@ terraform {
   }
 }
 
+locals {
+   name = "hello"
+}
+
 # Start the Container
 resource "docker_container" "container_id" {
   name  = var.name
