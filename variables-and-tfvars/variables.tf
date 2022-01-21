@@ -1,12 +1,12 @@
 variable "env" {
-  description = "env: dev or prod"
+#  description = "env: dev or prod"
 }
 
-#var.env = "dev"
 
 variable "container_name" {
   description = "Name of container"
   type        = map(string)
+
 }
 
 variable "image" {
